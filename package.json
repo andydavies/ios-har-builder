@@ -1,0 +1,21 @@
+{
+    "name": "chrome-har-capturer",
+    "author": "Andrea Cardaci <cyrus.and@gmail.com>",
+    "description": "Capture HAR files from a remote Chrome instance",
+    "keywords": ["chrome", "har", "remote", "debug"],
+    "homepage": "https://github.com/cyrus-and/chrome-har-capturer",
+    "version": "0.0.2",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/cyrus-and/chrome-har-capturer.git"
+    },
+    "bin": {
+        "chrome-har-capturer": "./bin/chrome-har-capturer"
+    },
+    "dependencies": {
+        "ws": "0.4.x",
+        "optimist": "0.3.x",
+        "colors": "0.6.x",
+        "iosdriver": "0.0.2"
+    }
+}
