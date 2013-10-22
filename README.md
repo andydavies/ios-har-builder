@@ -15,7 +15,7 @@ Loads pages in iOS Safari and builds a HTTP Archive (HAR) file for page load.
 
 Start the proxy
 
-Then either the iOS Simulator and launch Safari, or connect an iPhone/iPad via USB cable
+Then either launch the iOS Simulator or connect an iPhone/iPad via USB cable and launch Safari
 
     Usage: bin/ios-har-builder [options] URL...
 
