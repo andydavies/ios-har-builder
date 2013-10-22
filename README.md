@@ -1,7 +1,7 @@
 #ios-har-builder
 ===================
 
-Loads pages on Safari on iOS Simulator and builds a HTTP Archive (HAR) file for page load.
+Loads pages in iOS Safari and builds a HTTP Archive (HAR) file for page load.
 
 **This is work-in-progress and liable to change**
 
@@ -9,10 +9,13 @@ Loads pages on Safari on iOS Simulator and builds a HTTP Archive (HAR) file for 
 
 1. Clone repository
 2. Run ```npm install``` to install dependencies
+3. Install Google's proxy that connects Chrome DevTools to iOS WebKit - https://github.com/google/ios-webkit-debug-proxy (there's a homebrew recipe for this)
 
 ##Usage
 
-Load the iOS Simulator and launch Safari then
+Start the proxy
+
+Then either the iOS Simulator and launch Safari, or connect an iPhone/iPad via USB cable
 
     Usage: bin/ios-har-builder [options] URL...
 
@@ -35,7 +38,6 @@ It's a separate fork for now as there are some differences in behaviour between 
 - Cookies aren't currently supported
 - Code needs cleaning up and refactoring in several places
 - Host and Port parameters don't work
-- iOS Simulator only (for now)
 
 ##Resources
 

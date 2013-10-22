@@ -1,5 +1,7 @@
 #!/usr/bin/env node 
 
+//--debug-brk
+
 var fs = require('fs');
 var chc = require('../');
 var colors = require('colors');
@@ -8,17 +10,27 @@ var argv = require('optimist')
            'Usage: $0 [options] URL...')
     .demand(1)
     .options({
+        'device' : {
+            'demand' : false,
+            'alias' : 'd',
+            'description' : 'Name of device to generate HAR on',
+        },
         'host': {
             'demand': false,
             'alias': 'h',
             'description': 'Remote Debugging Protocol host',
-            'default': '::1'
+            'default': 'localhost'
+        },
+        'keepcache': {
+            'demand': false,
+            'alias': 'h',
+            'description': 'Keep cache between URLs',
         },
         'port': {
             'demand': false,
             'alias': 'p',
             'description': 'Remote Debugging Protocol port',
-            'default': 27753
+            'default': 9221 // 27753
         },
         'output': {
             'demand': false,
@@ -46,19 +58,22 @@ if (argv.verbose) {
 c.on('pageEnd', function(url) {
     console.error('DONE'.green + ' ' + url);
 });
+
 c.on('pageError', function(url) {
     console.error('FAIL'.red + ' ' + url);
 });
+
 c.on('end', function(har) {
     var prettyHar = JSON.stringify(har, null, 4);
     if (argv.output) {
         fs.writeFileSync(output, prettyHar);
-    } else {
+    } 
+    else {
         console.log(prettyHar);
     }
 });
+
 c.on('error', function() {
-    console.error('Unable to connect to Chrome on ' +
-                  argv.host + ':' + argv.port);
+    console.error('Unable to connect to Safari on ' + argv.host + ':' + argv.port);
     process.exit(1);
 });
